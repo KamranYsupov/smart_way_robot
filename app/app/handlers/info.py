@@ -28,7 +28,7 @@ info_router = Router()
 async def about_handler(
         message: Message,
 ) -> None:
-    base_photo = FSInputFile("app/media/base_photo.jpg")
+    video = FSInputFile("app/media/lifesol.mp4")
 
     presentation_keyboard = InlineKeyboardBuilder()
     presentation_button = InlineKeyboardButton(
@@ -49,8 +49,8 @@ async def about_handler(
         activation_guide_button,
     )
 
-    await message.answer_photo(
-        photo=base_photo,
+    await message.answer_video(
+        video=video,
         reply_markup=presentation_keyboard.adjust(1).as_markup(),
     )
 
