@@ -6,8 +6,8 @@ from app.models.telegram_user import TelegramUser, DonateStatus
 def get_reply_keyboard(current_user: TelegramUser):
     keyboard = [
         [
-            KeyboardButton(text="💡О Нас"),
-            KeyboardButton(text="⚡️ Активация"),
+            KeyboardButton(text="️⚡️ LifeSol инфо"),
+            KeyboardButton(text="💡 SmartWay"),
         ],
         [
             KeyboardButton(text="⚙️ Настройки"),
