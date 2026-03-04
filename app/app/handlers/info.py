@@ -39,10 +39,6 @@ async def about_handler(
         text="💬 Чат LifeSol",
         url=settings.group_link
     )
-    web_app_link_button = InlineKeyboardButton(
-        text="Нетворкинг",
-        url=settings.web_app_link
-    )
     activation_guide_button = InlineKeyboardButton(
         text="Инструкция по активации",
         url=settings.activation_guide_link
@@ -50,7 +46,6 @@ async def about_handler(
     presentation_keyboard.add(
         presentation_button,
         chat_link_button,
-        web_app_link_button,
         activation_guide_button,
     )
 
