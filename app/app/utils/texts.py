@@ -25,9 +25,9 @@ def get_donate_confirm_message(
     )
 
     message_text = (
-        f"✳️ Кто-то получил 🎁 {get_donate_value_with_currency(int(donate_sum), matrix_build_type)}\n"
+        f"<b>✳️ Кто-то получил 🎁 {get_donate_value_with_currency(int(donate_sum), matrix_build_type)}\n"
         f"📶 Уровень: {status}\n\n"
-        "💡SmartWay - качаем кошельки!"
+        "💡SmartWay - качаем кошельки!</b>"
     )
 
     return message_text
