@@ -225,10 +225,10 @@ async def donations_menu_handler(
         text="Маркетинг",
         url=settings.marketing_button_link)
     )
-    inline_buttons.append(InlineKeyboardButton(
-        text="Канал Подарков 🎁",
-        url=settings.donates_channel_link
-    ))
+    # inline_buttons.append(InlineKeyboardButton(
+    #     text="Канал Подарков 🎁",
+    #     url=settings.donates_channel_link
+    # ))
     keyboard = InlineKeyboardBuilder()
     keyboard.add(*inline_buttons)
 
