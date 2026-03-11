@@ -51,7 +51,7 @@ async def subscribe_handler(
 
     buttons = [
         InlineKeyboardButton(
-            text="ЧАТ",
+            text="💬 ЧАТ 💬",
             url=settings.chat_link),
         InlineKeyboardButton(
             text="Проверить подписку ✅",
