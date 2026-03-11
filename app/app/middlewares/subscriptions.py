@@ -1,5 +1,6 @@
 from aiogram.enums import ChatMemberStatus
-from aiogram.types import Message, CallbackQuery
+from aiogram.types import Message, CallbackQuery, FSInputFile, InlineKeyboardButton
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 from dependency_injector.wiring import inject, Provide
 
 from app.services import telegram_user_service
@@ -32,13 +33,25 @@ async def subscription_checker_middleware(
     )
 
     if result.status in (ChatMemberStatus.LEFT, ChatMemberStatus.KICKED):
-        await event.answer(
-            f"Присоединитесь к чату нашего сообщества\n\n {settings.chat_link}",
-            reply_markup=get_donate_keyboard(
-                buttons={
-                    "Я подписан(а) ✅": f"menu_{current_user.sponsor_user_id}",
-                }
-            ),
+        file_name = "app/media/registration_photo.jpg"
+        file_input = FSInputFile(file_name)
+
+        buttons = [
+            InlineKeyboardButton(
+                text="💬 ЧАТ 💬",
+                url=settings.chat_link),
+            InlineKeyboardButton(
+                text="Проверить подписку ✅",
+                callback_data=f"menu_{current_user.sponsor_user_id}",
+            )
+        ]
+        keyboard = InlineKeyboardBuilder()
+        keyboard.add(*buttons)
+
+        await event.answer_photo(
+            photo=file_input,
+            caption=f"🔑 Для доступа к основным функциям бота, подпишитесь на чат сообщества ⤵️",
+            reply_markup=keyboard.adjust(1, 1).as_markup()
         )
         return
 
