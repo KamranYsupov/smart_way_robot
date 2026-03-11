@@ -46,14 +46,26 @@ async def subscribe_handler(
         callback: CallbackQuery,
 ) -> None:
     sponsor_user_id = get_callback_value(callback.data)
+    file_name = "app/media/registration_photo.jpg"
+    file_input = FSInputFile(file_name)
 
-    await callback.message.edit_text(
-        f"Для старта работы, присоединитесь к чату нашего сообщества\n\n {settings.chat_link}",
-        reply_markup=get_donate_keyboard(
-            buttons={
-                "Я подписан(а) ✅": f"menu_{sponsor_user_id}",
-            }
-        ),
+    buttons = [
+        InlineKeyboardButton(
+            text="ЧАТ",
+            url=settings.chat_link),
+        InlineKeyboardButton(
+            text="Проверить подписку ✅",
+            callback_data=f"menu_{sponsor_user_id}",
+        )
+    ]
+    keyboard = InlineKeyboardBuilder()
+    keyboard.add(*buttons)
+
+    await callback.message.delete()
+    await callback.message.answer_photo(
+        photo=file_input,
+        caption=f"🔑 Для доступа к основным функциям бота, подпишитесь на чат сообщества ⤵️",
+        reply_markup=keyboard.adjust(1, 1).as_markup()
     )
 
 
