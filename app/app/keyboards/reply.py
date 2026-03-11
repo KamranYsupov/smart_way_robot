@@ -7,7 +7,7 @@ def get_reply_keyboard(current_user: TelegramUser):
     keyboard = [
         [
             KeyboardButton(text="⚡️ LifeSol инфо"),
-            KeyboardButton(text="💡 SmartWay"),
+            KeyboardButton(text="💸 P2P Money"),
         ],
         [
             KeyboardButton(text="⚙️ Настройки"),

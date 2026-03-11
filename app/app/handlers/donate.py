@@ -132,7 +132,7 @@ async def subscription_checker(
     )
 
 @donate_router.callback_query(F.data.startswith("donations_"))
-@donate_router.message(F.text == "💡 SmartWay")
+@donate_router.message(F.text == "💸 P2P Money")
 @inject
 async def donations_menu_handler(
         aiogram_type: Message | CallbackQuery,
